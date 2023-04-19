@@ -5,7 +5,7 @@ module.exports = {
   mode: "production",
   entry: "./src/app.ts",
   output: { filename: "bundle.js", path: path.resolve(__dirname, "dist") },
-  devtool: "none",
+  // devtool: "none",
   module: {
     rules: [
       { test: /\.ts$/, exclude: /node_modules/, use: "ts-loader" },
