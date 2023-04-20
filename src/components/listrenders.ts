@@ -89,3 +89,33 @@ export const renderNewsTiles = (state: StateType, container: HTMLElement) => {
     container.innerHTML = tileCards.join("");
   }
 };
+
+function generateRandomColor() {
+  let r = Math.floor(Math.random() * 106) + 125;
+  let g = Math.floor(Math.random() * 106) + 125;
+  let b = Math.floor(Math.random() * 106) + 125;
+
+  let hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+
+  return hex;
+}
+
+export const renderAnnouncementTiles = (container: HTMLElement) => {
+  const announcementTiles = [...Array(10)].map((_) => {
+    const randomColor = generateRandomColor();
+    return ` <div class="announcement-tile" style="border-left: 5px solid ${randomColor}; border-right: 5px solid ${randomColor};">
+    <h4>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
+      pariatur?
+    </h4>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis
+      iure libero quisquam, reprehenderit illo ipsa. Molestiae ratione
+      eveniet quisquam iusto.
+    </p>
+  </div>`;
+  });
+
+  container.innerHTML = "";
+  container.innerHTML = announcementTiles.join("");
+};
