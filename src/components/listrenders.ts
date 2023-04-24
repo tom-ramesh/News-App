@@ -108,11 +108,6 @@ export const renderAnnouncementTiles = (container: HTMLElement) => {
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
       pariatur?
     </h4>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis
-      iure libero quisquam, reprehenderit illo ipsa. Molestiae ratione
-      eveniet quisquam iusto.
-    </p>
   </div>`;
   });
 
