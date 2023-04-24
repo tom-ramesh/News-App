@@ -26,18 +26,18 @@ jobs:
         run: npm install
 
       - name: Install json server
-        run: npm install -g json server
+        run: npm install -g json-server
 
       - name: Run server
         run: |
-          cd src/dummyApi
+          cd server
           json-server lists.json &
 
       - name: Wait for server to start
         run: |
           npx wait-on http://localhost:3000
 
-      - name: Run app
+      - name: Build and deploy
         run: |
-          cd ~
-          npm start
+          npm run build
+          npm run deploy
