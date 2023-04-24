@@ -115,8 +115,8 @@ window.addEventListener("load", getNews);
 
 //menu-btn toggle
 menuButton.onclick = () => {
-  mobileMenu.classList.toggle("active");
   menuIcon.classList.toggle("bx-x");
+  mobileMenu.classList.toggle("active");
 };
 
 //search function
