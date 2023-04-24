@@ -28,7 +28,6 @@ jobs:
     - name: Run server 
       run: |
         cd src/dummyApi
-        npm install -g json-server
         json-server lists.json &
         
     - name: Wait for server to start
