@@ -18,5 +18,9 @@
     "webpack": "^5.77.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.13.2"
+  },
+  "dependencies": {
+    "json-server": "^0.17.3",
+    "wait-on": "^7.0.1"
   }
 }
