@@ -1,9 +1,38 @@
-import { MultimediaType, StateType } from "../models";
+import {
+  MostPopularArticleDetailsType,
+  MultimediaType,
+  SearchArticleDetailType,
+  StateType,
+} from "../models";
 import { makeImageUrl } from "../requests";
 
-export const renderTopArticles = (state: StateType, container: HTMLElement) => {
-  const topNewsElements = state.topNews.map((news) => {
-    const date = new Date(news.updated);
+export const renderTopArticles = <
+  T extends MostPopularArticleDetailsType | SearchArticleDetailType
+>(
+  list: Array<T>,
+  container: HTMLElement
+) => {
+  const topNewsElements = list?.map((news) => {
+    let date = new Date(),
+      authorName = "",
+      department = "",
+      title = "",
+      imgUrl = "";
+    if (news.listType === "topNews") {
+      date = new Date(news.updated ? news.updated : "");
+      authorName = news.byline.slice(3);
+      department = news.section;
+      title = news.title;
+      imgUrl =
+        news.media.length > 0 ? news.media[0]["media-metadata"][2].url : "";
+    } else if (news.listType === "search") {
+      date = new Date(news.pub_date ? news.pub_date : "");
+      authorName = news.byline.original.slice(3);
+      department = news.section_name;
+      title = news.headline.main;
+      imgUrl = "";
+    }
+
     return ` <div class="news-card">
       <div class="news-header">
         <div class="content-left">
@@ -13,8 +42,8 @@ export const renderTopArticles = (state: StateType, container: HTMLElement) => {
             id=""
           />
           <div class="news-info">
-            <label for="" class="author-name">${news.byline.slice(3)}</label>
-            <p class="author-department">${news.section}</p>
+            <label for="" class="author-name">${authorName}</label>
+            <p class="author-department">${department}</p>
           </div>
         </div>
         <div class="content-right">
@@ -23,12 +52,10 @@ export const renderTopArticles = (state: StateType, container: HTMLElement) => {
       </div>
       <div class="news-body">
         <p>
-          ${news.title}
+          ${title}
         </p>
         <img
-          src=${
-            news.media.length > 0 ? news.media[0]["media-metadata"][2].url : ""
-          }
+          src=${imgUrl}
           alt=""
         />
       </div>

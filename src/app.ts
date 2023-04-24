@@ -5,7 +5,11 @@ import {
   renderTopArticles,
 } from "./components/listrenders";
 import { renderSkeletonCards, renderSkeletonTiles } from "./components/loaders";
-import { MultimediaType, StateType } from "./models";
+import {
+  MostPopularArticleDetailsType,
+  MultimediaType,
+  StateType,
+} from "./models";
 import { makeImageUrl } from "./requests";
 
 const $ = (query: string) => {
@@ -63,11 +67,15 @@ const getNews = async () => {
   renderAnnouncementTiles(announcementTilesContainer);
   const data = await getMostViewedArticles();
 
-  const data2 = await searchArticles("");
+  const data2 = await searchArticles();
 
   setState(
-    () => (state.topNews = data.results ?? []),
-    () => renderTopArticles(state, topNewsContainer)
+    () => (state.topNews = data ?? []),
+    () =>
+      renderTopArticles<MostPopularArticleDetailsType>(
+        state.topNews as Array<MostPopularArticleDetailsType>,
+        topNewsContainer
+      )
   );
 
   setState(
@@ -76,9 +84,9 @@ const getNews = async () => {
   );
 };
 
-const handleSubmit = async (searchQuery: string) => {
+const handleSubmit = async () => {
   renderSkeletonTiles(newsTilesContainer);
-  const searchResult = await searchArticles(searchQuery);
+  const searchResult = await searchArticles();
 
   setState(
     () => (state.allNews = searchResult.response.docs),
@@ -86,10 +94,16 @@ const handleSubmit = async (searchQuery: string) => {
   );
 };
 
-getNews();
+const handleMobileSearch = async () => {
+  const searchResult = await searchArticles();
+  setState(
+    () => (state.topNews = searchResult.response.docs),
+    () => {}
+  );
+};
 
-//initial API call
-// window.addEventListener("load", getNews);
+// initial API call
+window.addEventListener("load", getNews);
 
 //menu-btn toggle
 menuButton.onclick = () => {
@@ -100,7 +114,7 @@ menuButton.onclick = () => {
 //search function
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  handleSubmit(searchInput.value);
+  handleSubmit();
 });
 
 // dark toggle

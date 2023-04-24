@@ -33,6 +33,7 @@ body {
   transition: color, background 0.5s ease-in;
   overflow: hidden;
   scroll-behavior: smooth;
+  max-width: 2048px;
 }
 
 .dark-mode {
@@ -751,6 +752,16 @@ body {
     color: var(--main-black);
   }
 
+  .side-nav .mobile-menu a:first-child {
+    display: flex;
+    align-items: center;
+  }
+
+  .side-nav .mobile-menu a:first-child .menu-icon {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+
   .side-nav a:hover .nav-icon {
     color: var(--main-color);
     animation: none;
@@ -764,8 +775,15 @@ body {
       "sidebar";
   }
 
-  .news-card {
+  .news-container {
+    padding: 0 1rem;
+    padding-top: 2rem;
+  }
+
+  .news-card,
+  .skeleton-card {
     max-width: 600px;
+    margin-bottom: 1.5rem;
   }
 
   .more-container {

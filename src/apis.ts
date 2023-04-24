@@ -1,18 +1,13 @@
 import { getRequest } from "./requests";
 
-export const getMostViewedArticles = async (period: number = 7) => {
-  const data = await getRequest(
-    `https://api.nytimes.com/svc/mostpopular/v2/emailed/${period.toString()}.json`
-  );
+export const getMostViewedArticles = async () => {
+  const data = await fetch(`http://localhost:3000/topNews`);
 
-  return data;
+  return data.json();
 };
 
-export const searchArticles = async (searchKey: string) => {
-  const data = await getRequest(
-    "https://api.nytimes.com/svc/search/v2/articlesearch.json",
-    { q: searchKey }
-  );
+export const searchArticles = async () => {
+  const data = await fetch(`http://localhost:3000/allNews`);
 
-  return data;
+  return data.json();
 };
