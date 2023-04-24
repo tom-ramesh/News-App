@@ -1,4 +1,4 @@
-import { getRequest } from "./requests";
+import { getQueryString, getRequest } from "./requests";
 
 export const getMostViewedArticles = async () => {
   const data = await fetch(`http://localhost:3000/topNews`);
@@ -6,8 +6,11 @@ export const getMostViewedArticles = async () => {
   return data.json();
 };
 
-export const searchArticles = async () => {
-  const data = await fetch(`http://localhost:3000/allNews`);
+export const searchArticles = async (searchString: string) => {
+  console.log(searchString);
+  const data = await fetch(
+    `http://localhost:3000/allNews?${getQueryString({ q: searchString })}`
+  );
 
   return data.json();
 };

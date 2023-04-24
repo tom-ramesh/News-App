@@ -20,3 +20,9 @@ export const getRequest = async (
 
 export const makeImageUrl = (path: string) =>
   `https://api.nytimes.com/svc/search/v2/articlesearch.json/get/${path}?api-key=${NY_API_KEY}`;
+
+export const getQueryString = (params: { [key: string]: any }) => {
+  const queryString = new URLSearchParams(params).toString();
+
+  return queryString;
+};

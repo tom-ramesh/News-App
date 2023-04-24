@@ -8,6 +8,7 @@ import { renderSkeletonCards, renderSkeletonTiles } from "./components/loaders";
 import {
   MostPopularArticleDetailsType,
   MultimediaType,
+  SearchArticleDetailType,
   StateType,
 } from "./models";
 import { makeImageUrl } from "./requests";
@@ -41,6 +42,8 @@ const searchInput = $("#search-input")! as HTMLInputElement;
 const announcementTilesContainer = $(
   ".announcements-container div"
 )! as HTMLDivElement;
+const mobileSearchForm = $(".mobile-search") as HTMLFormElement;
+const mobileSearchInput = $("#mobile-search-input") as HTMLInputElement;
 
 // dropdown options
 // selectOptions.forEach((option) => {
@@ -67,7 +70,7 @@ const getNews = async () => {
   renderAnnouncementTiles(announcementTilesContainer);
   const data = await getMostViewedArticles();
 
-  const data2 = await searchArticles();
+  const data2 = await searchArticles("");
 
   setState(
     () => (state.topNews = data ?? []),
@@ -86,19 +89,24 @@ const getNews = async () => {
 
 const handleSubmit = async () => {
   renderSkeletonTiles(newsTilesContainer);
-  const searchResult = await searchArticles();
+  const searchResult = await searchArticles("");
 
   setState(
-    () => (state.allNews = searchResult.response.docs),
+    () => (state.allNews = searchResult),
     () => renderNewsTiles(state, newsTilesContainer)
   );
 };
 
 const handleMobileSearch = async () => {
-  const searchResult = await searchArticles();
+  const searchResult = await searchArticles(mobileSearchInput.value);
+
   setState(
-    () => (state.topNews = searchResult.response.docs),
-    () => {}
+    () => (state.topNews = searchResult),
+    () =>
+      renderTopArticles<SearchArticleDetailType>(
+        state.topNews as Array<SearchArticleDetailType>,
+        topNewsContainer
+      )
   );
 };
 
@@ -115,6 +123,11 @@ menuButton.onclick = () => {
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   handleSubmit();
+});
+
+mobileSearchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  handleMobileSearch();
 });
 
 // dark toggle

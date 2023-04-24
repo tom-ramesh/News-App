@@ -345,7 +345,8 @@ body {
 /* end of more-section */
 
 /* search-bar */
-.search-block {
+.search-block,
+.mobile-search {
   max-width: 500px;
   background: rgba(255, 255, 255, 0.2);
   display: flex;
@@ -355,6 +356,11 @@ body {
   padding: 1rem;
 }
 
+.mobile-search {
+  margin: 1rem;
+}
+
+.mobile-search input,
 .search-block input {
   width: 100%;
   background: transparent;
@@ -368,6 +374,7 @@ body {
   color: var(--grey-dark);
 }
 
+.mobile-search button,
 .search-block button {
   cursor: pointer;
   display: flex;
