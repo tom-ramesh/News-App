@@ -34,8 +34,7 @@ jobs:
           json-server lists.json &
 
       - name: Wait for server to start
-        run: |
-          npx wait-on http://localhost:3000
+        run: ./node_modules/.bin/wait-on http://localhost:3000
 
       - name: Build and deploy
         run: |
