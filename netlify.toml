@@ -5,8 +5,8 @@
     functions = "functions/"
 
 [dev]
-    command = "npm run server"
-    port = 4001
+    command = "npm run start"
+    port = 4000
 
 [dev.environment]
     JSON_SERVER_PORT = "4001"
