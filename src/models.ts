@@ -1,4 +1,4 @@
-type MostPopularArticleDetailsType = {
+export type MostPopularArticleDetailsType = {
   abstract: string;
   byline: string;
   title: string;
@@ -11,6 +11,8 @@ type MostPopularArticleDetailsType = {
     }>;
   }>;
   section: string;
+  published_date: string;
+  listType: "topNews";
 };
 
 export type MultimediaType = Array<{
@@ -23,9 +25,16 @@ export type SearchArticleDetailType = {
   abstract: string;
   headline: { main: string };
   multimedia: MultimediaType;
+  listType: "search";
+  byline: { original: string };
+  pub_date: string;
+  section_name: string;
+  type: string;
 };
 
 export type StateType = {
-  topNews: Array<MostPopularArticleDetailsType>;
+  topNews:
+    | Array<MostPopularArticleDetailsType>
+    | Array<SearchArticleDetailType>;
   allNews: Array<SearchArticleDetailType>;
 };

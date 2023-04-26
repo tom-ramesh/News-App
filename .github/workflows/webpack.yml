@@ -2,9 +2,9 @@ name: NodeJS with json server
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -15,26 +15,33 @@ jobs:
         node-version: [14.x, 16.x, 18.x]
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        
-    - name: Install dependencies
-      run: npm install
-        
-    - name: Run server 
-      run: |
-        cd src/dummyApi
-        json-server lists.json &
-        
-    - name: Wait for server to start
-      run: |
-        npx wait-on http://localhost:3000
-          
-    - name: Run app
-      run: |
-        cd ~
-        npm start
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Configure Git author
+        run: |
+          git config --global user.name "tom-ramesh"
+          git config --global user.email "tomramesh92@gmail.com"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install json server
+        run: npm install -g json-server
+
+      - name: Run server
+        run: |
+          cd server
+          json-server --watch lists.json --port 8000 &
+
+      - name: Wait for server to start
+        run: ./node_modules/.bin/wait-on http://localhost:8000 --timeout 60000
+
+      - name: Build and deploy
+        run: |
+          npm run build
+          npm run deploy
