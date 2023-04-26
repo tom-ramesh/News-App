@@ -7,6 +7,10 @@
 [dev]
     command = "npm run server"
 
+[[functions]]
+    name = "json-server"
+    path = "api/json-server.js"
+
 [[redirects]]
     from = "/api/*"
     to = "/.netlify/functions/json-server/:splat"
