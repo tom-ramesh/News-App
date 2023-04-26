@@ -1,7 +1,7 @@
 import { getQueryString } from "./requests";
 
 export const getMostViewedArticles = async () => {
-  const data = await fetch(`/.netlify/functions/topNews`);
+  const data = await fetch(`http://localhost:3001/topNews`);
 
   return data.json();
 };
