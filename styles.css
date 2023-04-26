@@ -537,6 +537,9 @@ body {
 .announcements-container .announcement-tile.dark-mode {
   background-color: var(--grey-dark);
 }
+.announcements-container .announcement-tile p {
+  display: none;
+}
 /* end of announcements section */
 
 /* toggle-switch */
