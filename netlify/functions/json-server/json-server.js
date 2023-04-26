@@ -3,7 +3,7 @@ const express = require("express");
 const jsonServer = require("json-server");
 
 const app = express();
-const router = jsonServer.router("server/lists.json");
+const router = jsonServer.router("./lists.json");
 const middlewares = jsonServer.defaults();
 
 app.use("/api", middlewares);
