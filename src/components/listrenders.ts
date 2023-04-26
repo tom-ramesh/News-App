@@ -6,6 +6,8 @@ import {
 } from "../models";
 import { makeImageUrl } from "../requests";
 
+const nodataImage = `<img src="public/images/no_data.png" alt="" class="no-data-image">`;
+
 export const renderTopArticles = <
   T extends MostPopularArticleDetailsType | SearchArticleDetailType
 >(
@@ -72,7 +74,7 @@ export const renderTopArticles = <
   if (topNewsElements.length > 0) {
     container.innerHTML = topNewsElements.join("");
   } else {
-    container.innerHTML = "No Data";
+    container.innerHTML = nodataImage;
   }
 };
 
@@ -95,10 +97,10 @@ const getNewsTileImage = (multimediaArray: MultimediaType) => {
 };
 
 export const renderNewsTiles = (state: StateType, container: HTMLElement) => {
-  const tileCards = state.allNews.map((news, i) => {
+  const tileCards = state.allNews.map((news) => {
     return `<div class="news-tile">
       <img
-        src=${i === 0 ? getNewsTileImage(news.multimedia) : ""}
+        src=""
         alt=""
       />
       <div>
@@ -116,7 +118,7 @@ export const renderNewsTiles = (state: StateType, container: HTMLElement) => {
   if (tileCards.length > 0) {
     container.innerHTML = tileCards.join("");
   } else {
-    container.innerHTML = "No Data";
+    container.innerHTML = nodataImage;
   }
 };
 

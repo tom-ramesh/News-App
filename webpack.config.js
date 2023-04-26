@@ -22,7 +22,7 @@ module.exports = {
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          ouputPath: "images/",
+          ouputPath: "public/images/",
         },
         exclude: /node_modules/,
       },
