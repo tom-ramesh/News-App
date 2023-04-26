@@ -3,6 +3,7 @@
     publish = "dist"
     branches = { only = ["main"]}
     functions = "netlify/functions"
+<<<<<<< HEAD
 
 [dev]
     command = "npm run start"
@@ -13,10 +14,15 @@
 [[functions]]
     name = "json-server"
     path = "api/json-server.js"
+=======
+
+[dev]
+    command = "npm run server"
+>>>>>>> 3a5cae788693cf7a2f5fe04bb28b46ec3d39618a
 
 [[redirects]]
     from = "/api/*"
-    to = "/.netlify/functions/:splat"
+    to = "/.netlify/functions/json-server/:splat"
     status = 200
 
 
