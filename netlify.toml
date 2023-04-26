@@ -4,8 +4,8 @@
     branches = { only = ["main"]}
 
 [dev]
-    command = "npm start"
-    port = 3000
+    command = "npm run server"
+    port = 4001
     functions = "server/"
 
 [dev.environment]
