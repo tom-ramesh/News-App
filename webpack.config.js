@@ -11,7 +11,7 @@ module.exports = {
   devServer: {
     static: [{ directory: path.join(__dirname) }],
     compress: true,
-    port: 3001,
+    port: 3000,
   },
   devtool: "inline-source-map",
   module: {
