@@ -14,11 +14,6 @@
 [[functions]]
     name = "json-server"
     path = "api/json-server.js"
-=======
-
-[dev]
-    command = "npm run server"
->>>>>>> 3a5cae788693cf7a2f5fe04bb28b46ec3d39618a
 
 [[redirects]]
     from = "/api/*"
