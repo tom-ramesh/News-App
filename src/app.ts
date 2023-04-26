@@ -7,11 +7,10 @@ import {
 import { renderSkeletonCards, renderSkeletonTiles } from "./components/loaders";
 import {
   MostPopularArticleDetailsType,
-  MultimediaType,
   SearchArticleDetailType,
   StateType,
 } from "./models";
-import { makeImageUrl } from "./requests";
+import "../styles.css";
 
 const $ = (query: string) => {
   const elements = document.querySelectorAll(query);

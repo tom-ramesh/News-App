@@ -1,4 +1,4 @@
-import { getQueryString, getRequest } from "./requests";
+import { getQueryString } from "./requests";
 
 export const getMostViewedArticles = async () => {
   const data = await fetch(`http://localhost:3000/topNews`);

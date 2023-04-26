@@ -19,10 +19,11 @@ module.exports = {
         },
         exclude: /node_modules/,
       },
+      { test: /\.css$/, use: ["style-loader", "css-loader"] },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".js", ".css"],
   },
   plugins: [
     new CleanPlugin.CleanWebpackPlugin(),

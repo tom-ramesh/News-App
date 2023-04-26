@@ -14,10 +14,12 @@
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
     "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.1",
     "json-server": "^0.17.3",
+    "style-loader": "^3.3.2",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.3",
     "webpack": "^5.77.0",
