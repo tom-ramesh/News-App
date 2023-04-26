@@ -2,22 +2,14 @@
     command = "npm run build"
     publish = "dist"
     branches = { only = ["main"]}
-    functions = "netlify/functions"
-<<<<<<< HEAD
-
-[dev]
-    command = "npm run start"
-    port = 3000
-    targetPort = 3001
-    publish = "dist/"
-
-[[functions]]
-    name = "json-server"
-    path = "api/json-server.js"
+    functions = "netlify/functions"\
 
 [[redirects]]
     from = "/api/*"
     to = "/.netlify/functions/json-server/:splat"
     status = 200
+
+[dev]
+    command = "npm run start"
 
 
