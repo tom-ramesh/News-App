@@ -9,7 +9,5 @@
     to = "/.netlify/functions/json-server/:splat"
     status = 200
 
-[dev]
-    command = "npm run server"
 
 
