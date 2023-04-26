@@ -1,8 +1,17 @@
 [build]
     command = "npm run build"
     publish = "dist"
+    branches = { only = ["main"]}
+
+[dev]
+    command = "npm start"
+    port = 3000
+    functions = "server/"
+
+[dev.environment]
+    JSON_SERVER_PORT = "4001"
 
 [[redirects]]
-    from = "/server/*"
-    to = "http://localhost:3000/:splat"
+    from = "/api/*"
+    to = "http://localhost:$JSON_SERVER_PORT/:splat"
     status = 200
