@@ -2,16 +2,16 @@
     command = "npm run build"
     publish = "dist"
     branches = { only = ["main"]}
+    functions = "functions/"
 
 [dev]
     command = "npm run server"
     port = 4001
-    functions = "server/"
 
 [dev.environment]
     JSON_SERVER_PORT = "4001"
 
 [[redirects]]
     from = "/api/*"
-    to = "http://localhost:$JSON_SERVER_PORT/:splat"
+    to = "/.netlify/functions/:splat"
     status = 200
