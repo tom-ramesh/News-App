@@ -68,9 +68,11 @@ export const renderTopArticles = <
     </div>`;
   });
 
+  container.innerHTML = "";
   if (topNewsElements.length > 0) {
-    container.innerHTML = "";
     container.innerHTML = topNewsElements.join("");
+  } else {
+    container.innerHTML = "No Data";
   }
 };
 
@@ -88,7 +90,6 @@ const getNewsTileImage = (multimediaArray: MultimediaType) => {
   const selectedImage = multimediaArray.find((imageData) =>
     imageType.includes(imageData?.subType || imageData?.subtype)
   );
-  console.log(selectedImage);
   // return makeImageUrl(selectedImage ? selectedImage.url : "");
   return makeImageUrl(multimediaArray[0].url || "");
 };
@@ -111,9 +112,11 @@ export const renderNewsTiles = (state: StateType, container: HTMLElement) => {
     </div>`;
   });
 
+  container.innerHTML = "";
   if (tileCards.length > 0) {
-    container.innerHTML = "";
     container.innerHTML = tileCards.join("");
+  } else {
+    container.innerHTML = "No Data";
   }
 };
 
@@ -135,6 +138,7 @@ export const renderAnnouncementTiles = (container: HTMLElement) => {
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
       pariatur?
     </h4>
+    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
   </div>`;
   });
 

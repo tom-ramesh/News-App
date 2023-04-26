@@ -21,18 +21,20 @@
       </div> -->
       <!-- end of side-modal -->
 
-      <!-- toggle-switch-->
-      <div class="toggle-switch"></div>
       <!-- side nav -->
       <nav class="side-nav">
         <div class="page-icons">
-          <a href="#"><i class="bx bx-news nav-icon"></i></a>
-          <a href="#"><i class="bx bxs-megaphone nav-icon"></i></a>
+          <div id="home-icon"><i class="bx bx-news nav-icon"></i></div>
+          <div id="announcements-icon">
+            <i class="bx bxs-megaphone nav-icon"></i>
+          </div>
+          </div>
         </div>
         <button class="menu-btn">
           <i class="bx bx-menu nav-icon" id="menu-icon"></i>
         </button>
         <div class="mobile-menu">
+          <div class="night-mode-btn"><label>Switch to Dark Mode</label><i class='bx bxs-moon' id="mode-icon"></i></div>
           <form class="mobile-search">
             <input
               type="text"
@@ -41,9 +43,6 @@
             />
             <button type="submit"><i class="bx bx-search"></i></button>
           </form>
-
-          <!-- <a href="">Sports</a>
-          <a href="">Politics</a> -->
         </div>
       </nav>
       <!-- end of side-nav -->
@@ -55,6 +54,8 @@
       </div>
 
       <div class="more-container">
+        <!-- toggle-switch-->
+        <div class="toggle-switch"></div>
         <div class="announcements-container">
           <label class="title">Announcements</label>
           <div></div>
@@ -68,15 +69,6 @@
             />
             <button type="submit"><i class="bx bx-search"></i></button>
           </form>
-          <!-- <div class="dropdown">
-            <input type="text" placeholder="Select" class="text-box" />
-            <div class="options">
-              <div id="select-option">A1</div>
-              <div id="select-option">A2</div>
-              <div id="select-option">A3</div>
-              <div id="select-option">A4</div>
-            </div>
-          </div> -->
         </div>
         <div class="more-news">
           <div class="news-tile-container"></div>

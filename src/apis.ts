@@ -7,7 +7,6 @@ export const getMostViewedArticles = async () => {
 };
 
 export const searchArticles = async (searchString: string) => {
-  console.log(searchString);
   const data = await fetch(
     `http://localhost:3000/allNews?${getQueryString({ q: searchString })}`
   );
