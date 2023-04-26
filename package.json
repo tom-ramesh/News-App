@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "json-server --watch server/lists.json --port 4001",
+    "server": "json-server --watch server/lists.json --port 3001",
     "start": "npm run server & webpack-dev-server",
     "build": "webpack --config webpack.config.prod.js",
     "deploy": "gh-pages -d dist"
