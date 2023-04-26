@@ -8,6 +8,7 @@
     command = "npm run start"
     port = 3000
     targetPort = 3001
+    publish = "dist/"
 
 [dev.environment]
     JSON_SERVER_PORT = "4001"
