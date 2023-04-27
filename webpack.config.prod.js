@@ -33,6 +33,6 @@ module.exports = {
       template: "index.html",
       inject: "body",
     }),
-    new Dotenv(),
+    new Dotenv({ path: path.join(__dirname, ".env") }),
   ],
 };
