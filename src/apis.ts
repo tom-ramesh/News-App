@@ -1,7 +1,5 @@
 import { getQueryString } from "./requests";
 
-const API_URL = "https://news-app-9876.glitch.me";
-
 export const getMostViewedArticles = async () => {
   console.log(API_URL);
   const data = await fetch(`${API_URL}/topNews`);
