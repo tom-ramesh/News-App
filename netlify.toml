@@ -1,6 +1,3 @@
-[build.environment]
-    API_URL = "https://news-app-9876.glitch.me"
-
 [build]
     base = "/"
     command = "npm run build"
