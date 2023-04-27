@@ -1,7 +1,10 @@
 const path = require("path");
 const CleanPlugin = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 module.exports = {
   mode: "production",
@@ -33,6 +36,6 @@ module.exports = {
       template: "index.html",
       inject: "body",
     }),
-    new Dotenv({ path: path.join(__dirname, ".env") }),
+    new webpack.DefinePlugin({ API_URL: JSON.stringify(process.env.API_URL) }),
   ],
 };
