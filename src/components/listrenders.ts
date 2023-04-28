@@ -5,8 +5,9 @@ import {
   StateType,
 } from "../models";
 import { makeImageUrl } from "../requests";
+import noDataImage from "../../public/images/no_data.png";
 
-const nodataImage = `<img src="public/images/no_data.png" alt="" class="no-data-image">`;
+const nodataImage = `<img src=${noDataImage} alt="" class="no-data-image">`;
 
 export const renderTopArticles = <
   T extends MostPopularArticleDetailsType | SearchArticleDetailType
@@ -132,18 +133,23 @@ function generateRandomColor() {
   return hex;
 }
 
-export const renderAnnouncementTiles = (container: HTMLElement) => {
-  const announcementTiles = [...Array(10)].map((_) => {
-    const randomColor = generateRandomColor();
-    return ` <div class="announcement-tile" style="border-left: 5px solid ${randomColor}; border-right: 5px solid ${randomColor};">
-    <h4>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
-      pariatur?
-    </h4>
-    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-  </div>`;
-  });
+export const announcementTiles = [...Array(15)].map((_, i: number) => {
+  const randomColor = generateRandomColor();
 
+  return ` <div class="announcement-tile" style="border-left: 5px solid ${randomColor}; border-right: 5px solid ${randomColor};">
+<h4>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed,
+  pariatur? ${i}
+</h4>
+<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+</div>`;
+});
+
+export const renderAnnouncementTiles = (
+  container: HTMLElement,
+  firstIndex: number = 0,
+  lastIndex: number = 15
+) => {
   container.innerHTML = "";
-  container.innerHTML = announcementTiles.join("");
+  container.innerHTML = announcementTiles.slice(firstIndex, lastIndex).join("");
 };

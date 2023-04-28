@@ -7,12 +7,12 @@
     <script type="module" src="./dist/bundle.js"></script>
     <title>News & Announcements</title>
     <!-- <box-icons -->
-      <link
+    <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
-      />
-    </head>
-    <body>
+    />
+  </head>
+  <body>
     <main class="body-container">
       <!-- side-modal -->
       <!-- <div class="side-modal-backdrop">
@@ -27,13 +27,15 @@
           <div id="announcements-icon">
             <i class="bx bxs-megaphone nav-icon"></i>
           </div>
-          </div>
         </div>
         <button class="menu-btn">
           <i class="bx bx-menu nav-icon" id="menu-icon"></i>
         </button>
         <div class="mobile-menu">
-          <div class="night-mode-btn"><label>Switch to Dark Mode</label><i class='bx bxs-moon' id="mode-icon"></i></div>
+          <div class="night-mode-btn">
+            <label>Switch to Dark Mode</label
+            ><i class="bx bxs-moon" id="mode-icon"></i>
+          </div>
           <form class="mobile-search">
             <input
               type="text"
@@ -57,7 +59,15 @@
         <div class="toggle-switch"></div>
         <div class="announcements-container">
           <label class="title">Announcements</label>
-          <div></div>
+          <div class="carousel-box">
+            <button class="btn-left" id="scroll-button" data-direction="left">
+              &#60;
+            </button>
+            <div class="announcements-table"></div>
+            <button class="btn-right" id="scroll-button" data-direction="right">
+              &#62;
+            </button>
+          </div>
         </div>
         <div class="top-box">
           <form class="search-block">

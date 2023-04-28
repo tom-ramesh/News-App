@@ -1,5 +1,6 @@
 import { getMostViewedArticles, searchArticles } from "./apis";
 import {
+  announcementTiles,
   renderAnnouncementTiles,
   renderNewsTiles,
   renderTopArticles,
@@ -33,9 +34,7 @@ const topNewsContainer = $(".news-container div")! as HTMLDivElement;
 const newsTilesContainer = $(".news-tile-container")! as HTMLDivElement;
 const searchForm = $(".search-block")! as HTMLFormElement;
 const searchInput = $("#search-input")! as HTMLInputElement;
-const announcementTilesContainer = $(
-  ".announcements-container div"
-)! as HTMLDivElement;
+const announcementTilesContainer = $(".announcements-table")! as HTMLDivElement;
 const mobileSearchForm = $(".mobile-search") as HTMLFormElement;
 const mobileSearchInput = $("#mobile-search-input") as HTMLInputElement;
 const homeButton = $("#home-icon")! as HTMLDivElement;
@@ -43,9 +42,15 @@ const nightModeButton = $(".night-mode-btn") as HTMLDivElement;
 const announcementsButton = $("#announcements-icon") as HTMLDivElement;
 const sideNav = $(".side-nav")! as HTMLElement;
 const mainTitle = $(".news-container .title")! as HTMLLabelElement;
+const scrollButtons = $("#scroll-button") as NodeListOf<HTMLButtonElement>;
 
 //app state
-const state: StateType = { topNews: [], allNews: [] };
+const state: StateType = {
+  topNews: [],
+  allNews: [],
+  firstIndex: 0,
+  lastIndex: 7,
+};
 
 const setState = (callBack: () => void, renderFunction?: () => void) => {
   callBack();
@@ -171,6 +176,10 @@ const handleDarkToggle = (isMobile: boolean = false) => {
   skeletonNewsTiles?.forEach((tile) => {
     tile.classList.toggle("dark-mode");
   });
+
+  scrollButtons.forEach((button) => {
+    button.classList.toggle("dark-mode");
+  });
 };
 
 toggleswitch.addEventListener("click", () => handleDarkToggle());
@@ -185,4 +194,24 @@ homeButton.addEventListener("click", () => {
 announcementsButton.addEventListener("click", () => {
   mainTitle.textContent = "Announcements";
   renderAnnouncementTiles(topNewsContainer);
+});
+
+// carousel logic
+scrollButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const direction = button.dataset.direction;
+    const scrollAmount = 150;
+
+    if (direction === "left") {
+      announcementTilesContainer.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    } else if (direction === "right") {
+      announcementTilesContainer.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  });
 });
