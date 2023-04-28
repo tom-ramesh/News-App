@@ -146,10 +146,9 @@ body {
 /* news-container */
 .news-container {
   width: 100%;
-  padding: 0 3rem;
+  padding: 2rem 3rem;
   overflow-y: auto;
   min-width: 600px;
-  padding-top: 1rem;
   grid-area: newsbox;
   border-right: 1px solid var(--grey-light);
   /* for firefox */
@@ -163,8 +162,6 @@ body {
 .title {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
 }
 
 /* news-card */
@@ -348,7 +345,7 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  padding: 2rem 0;
+  padding: 2rem 3rem;
   border-right: 1px solid var(--grey-light);
 }
 
@@ -530,12 +527,46 @@ body {
   padding: 0 2rem;
 }
 
+.carousel-box :is(.btn-left, .btn-right) {
+  cursor: pointer;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  text-align: center;
+  padding: 2rem;
+  font-size: 3.5rem;
+  border-radius: 50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition-property: color, transform;
+  transition: 0.2s ease-in;
+}
+
+.carousel-box :is(.btn-left, .btn-right):hover {
+  transform: scale(1.1);
+  color: var(--main-color);
+}
+
+.carousel-box :is(.btn-left, .btn-right).dark-mode {
+  background: var(--grey-dark);
+  color: var(--main-white);
+}
+
 .announcements-table {
   display: flex;
   width: 95%;
   gap: 1rem;
-  overflow: hidden;
-  padding: 1rem 2rem;
+  overflow-x: scroll;
+  padding: 1rem 1rem;
+  margin: 0 1rem;
+  scrollbar-width: none;
+}
+
+.announcements-table::-webkit-scrollbar {
+  display: none;
 }
 
 .announcements-container .announcement-tile {

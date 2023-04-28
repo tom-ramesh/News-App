@@ -148,7 +148,7 @@ export const announcementTiles = [...Array(15)].map((_, i: number) => {
 export const renderAnnouncementTiles = (
   container: HTMLElement,
   firstIndex: number = 0,
-  lastIndex: number = 7
+  lastIndex: number = 15
 ) => {
   container.innerHTML = "";
   container.innerHTML = announcementTiles.slice(firstIndex, lastIndex).join("");

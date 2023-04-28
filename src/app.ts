@@ -42,8 +42,7 @@ const nightModeButton = $(".night-mode-btn") as HTMLDivElement;
 const announcementsButton = $("#announcements-icon") as HTMLDivElement;
 const sideNav = $(".side-nav")! as HTMLElement;
 const mainTitle = $(".news-container .title")! as HTMLLabelElement;
-const carouselLeft = $(".btn-left") as HTMLButtonElement;
-const carouselRight = $(".btn-right") as HTMLButtonElement;
+const scrollButtons = $("#scroll-button") as NodeListOf<HTMLButtonElement>;
 
 //app state
 const state: StateType = {
@@ -177,6 +176,10 @@ const handleDarkToggle = (isMobile: boolean = false) => {
   skeletonNewsTiles?.forEach((tile) => {
     tile.classList.toggle("dark-mode");
   });
+
+  scrollButtons.forEach((button) => {
+    button.classList.toggle("dark-mode");
+  });
 };
 
 toggleswitch.addEventListener("click", () => handleDarkToggle());
@@ -194,45 +197,28 @@ announcementsButton.addEventListener("click", () => {
 });
 
 // carousel logic
-const announcementTilesLength = announcementTiles.length;
+scrollButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const direction = button.dataset.direction;
+    const scrollAmount = 150;
 
-carouselLeft.addEventListener("click", () => {
-  const newFirstIndex = state.firstIndex - 7;
-  if (newFirstIndex >= 0) {
-    state.firstIndex -= 7;
-    state.lastIndex -= 7;
-  } else if (newFirstIndex < 0 && state.firstIndex !== 0) {
-    state.firstIndex = 0;
-    state.lastIndex = 7;
-  }
-
-  renderAnnouncementTiles(
-    announcementTilesContainer,
-    state.firstIndex,
-    state.lastIndex
-  );
+    if (direction === "left") {
+      announcementTilesContainer.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    } else if (direction === "right") {
+      announcementTilesContainer.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  });
 });
 
-carouselRight.addEventListener("click", () => {
-  const newLastIndex = state.lastIndex + 7;
-  if (newLastIndex <= announcementTilesLength) {
-    state.lastIndex += 7;
-    state.firstIndex += 7;
-  } else if (
-    newLastIndex > announcementTilesLength &&
-    state.lastIndex !== announcementTilesLength
-  ) {
-    state.lastIndex =
-      newLastIndex > announcementTilesLength
-        ? announcementTilesLength
-        : newLastIndex;
-    state.firstIndex =
-      state.firstIndex + 7 - (newLastIndex - announcementTilesLength);
-  }
-
-  renderAnnouncementTiles(
-    announcementTilesContainer,
-    state.firstIndex,
-    state.lastIndex
-  );
+announcementTilesContainer.addEventListener("scroll", () => {
+  const { scrollTop, scrollHeight, clientHeight, scrollLeft } =
+    announcementTilesContainer;
+  console.log(scrollTop, scrollHeight, clientHeight, scrollLeft);
+  console.log(announcementTilesContainer.scrollWidth);
 });
