@@ -336,7 +336,7 @@ body {
   transform: translateX(-100%);
   background: linear-gradient(90deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
   background-size: 200% 100%;
-  z-index: 500;
+  z-index: 200;
   filter: blur(5px);
   animation: shimmer 2s ease-out infinite;
 }
@@ -502,7 +502,7 @@ body {
   transform: translateX(-100%);
   background: linear-gradient(90deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
   background-size: 200% 100%;
-  z-index: 500;
+  z-index: 200;
   filter: blur(5px);
   animation: shimmer 2s ease-out infinite;
 }
@@ -521,16 +521,20 @@ body {
   min-width: 300px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
 }
 
-.announcements-container > div {
+.carousel-box {
   display: flex;
-  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.announcements-table {
+  display: flex;
+  width: 95%;
   gap: 1rem;
-  overflow-y: hidden;
-  overflow-x: auto;
+  overflow: hidden;
   padding: 1rem 2rem;
 }
 
@@ -677,6 +681,7 @@ body {
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 400;
     background-color: var(--main-white);
     height: max-content;
     width: 100%;

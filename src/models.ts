@@ -37,4 +37,6 @@ export type StateType = {
     | Array<MostPopularArticleDetailsType>
     | Array<SearchArticleDetailType>;
   allNews: Array<SearchArticleDetailType>;
+  firstIndex: number;
+  lastIndex: number;
 };
