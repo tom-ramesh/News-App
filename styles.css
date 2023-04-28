@@ -345,8 +345,22 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  padding: 2rem 3rem;
+  padding: 2rem 0;
   border-right: 1px solid var(--grey-light);
+}
+
+.more-container::before {
+  position: absolute;
+  content: "";
+  height: 100px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to top,
+    rgba(239, 239, 239, 255),
+    rgba(239, 239, 239, 0)
+  );
 }
 
 .top-box {
@@ -520,6 +534,10 @@ body {
   flex-direction: column;
 }
 
+.announcements-container .title {
+  margin-left: 3rem;
+}
+
 .carousel-box {
   display: flex;
   align-items: center;
@@ -603,7 +621,7 @@ body {
 }
 
 .toggle-switch.change {
-  top: 5rem;
+  top: 3rem;
   transition: top 0.4s;
 }
 

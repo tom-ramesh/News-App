@@ -215,10 +215,3 @@ scrollButtons.forEach((button) => {
     }
   });
 });
-
-announcementTilesContainer.addEventListener("scroll", () => {
-  const { scrollTop, scrollHeight, clientHeight, scrollLeft } =
-    announcementTilesContainer;
-  console.log(scrollTop, scrollHeight, clientHeight, scrollLeft);
-  console.log(announcementTilesContainer.scrollWidth);
-});
