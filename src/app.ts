@@ -1,6 +1,5 @@
 import { getMostViewedArticles, searchArticles } from "./apis";
 import {
-  announcementTiles,
   renderAnnouncementTiles,
   renderNewsTiles,
   renderTopArticles,
@@ -48,8 +47,6 @@ const scrollButtons = $("#scroll-button") as NodeListOf<HTMLButtonElement>;
 const state: StateType = {
   topNews: [],
   allNews: [],
-  firstIndex: 0,
-  lastIndex: 7,
 };
 
 const setState = (callBack: () => void, renderFunction?: () => void) => {
@@ -72,11 +69,11 @@ const renderTopNewsArticles = async () => {
 };
 
 const getNews = async () => {
+  renderTopNewsArticles();
   renderSkeletonTiles(newsTilesContainer);
   renderAnnouncementTiles(announcementTilesContainer);
 
   const data2 = await searchArticles("");
-  renderTopNewsArticles();
 
   setState(
     () => (state.allNews = data2 ?? []),
