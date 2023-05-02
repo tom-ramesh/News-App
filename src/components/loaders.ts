@@ -34,10 +34,7 @@ export const renderSkeletonCards = (container: HTMLElement) => {
 export const renderSkeletonTiles = (container: HTMLElement) => {
   const skeletonTiles = [...Array(10)].map((_) => {
     return `<div class="skeleton-news-tile">
-    <div></div>
     <div>
-      <div></div>
-      <div></div>
       <div></div>
       <div></div>
     </div>
