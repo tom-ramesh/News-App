@@ -98,22 +98,23 @@ const getNewsTileImage = (multimediaArray: MultimediaType) => {
 };
 
 export const renderNewsTiles = (state: StateType, container: HTMLElement) => {
-  const tileCards = state.allNews.map((news) => {
+  const tileCards = [...state.allNews, ...state.allNews].map((news) => {
     return `<div class="news-tile">
       <img
-        src=""
+        src=${news.image_url ?? ""}
         alt=""
       />
       <div>
         <h4>
           ${news.headline.main}
         </h4>
-        <p>
-          ${news.abstract}
-        </p>
       </div>
     </div>`;
   });
+
+  //   <p>
+  //   ${news.abstract}
+  // </p>
 
   container.innerHTML = "";
   if (tileCards.length > 0) {

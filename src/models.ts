@@ -30,6 +30,7 @@ export type SearchArticleDetailType = {
   pub_date: string;
   section_name: string;
   type: string;
+  image_url: string;
 };
 
 export type StateType = {
