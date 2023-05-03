@@ -6,11 +6,15 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
+const pages = [
+  { filename: "index.html", template: "index.html", chunks: ["bundle"] },
+  { filename: "detail.html", template: "detail.html", chunks: ["detail"] },
+];
+
 module.exports = {
   mode: "production",
-  entry: "./src/app.ts",
-  output: { filename: "bundle.js", path: path.resolve(__dirname, "dist") },
-  // devtool: "none",
+  entry: { bundle: "./src/app.ts", detail: "./src/detail.ts" },
+  output: { filename: "[name].js", path: path.resolve(__dirname, "dist") },
   module: {
     rules: [
       { test: /\.ts$/, exclude: /node_modules/, use: "ts-loader" },
@@ -31,11 +35,7 @@ module.exports = {
   },
   plugins: [
     new CleanPlugin.CleanWebpackPlugin(),
-    new HTMLWebpackPlugin({
-      filename: "index.html",
-      template: "index.html",
-      inject: "body",
-    }),
+    ...pages.map((page) => new HTMLWebpackPlugin(page)),
     new webpack.DefinePlugin({ API_URL: JSON.stringify(process.env.API_URL) }),
   ],
 };

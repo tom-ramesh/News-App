@@ -6,9 +6,9 @@ dotenv.config();
 
 module.exports = {
   mode: "development",
-  entry: "./src/app.ts",
+  entry: { bundle: "./src/app.ts", detail: "./src/detail.ts" },
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "/dist/",
   },

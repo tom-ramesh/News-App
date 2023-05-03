@@ -1,6 +1,9 @@
-import { getMostViewedArticles, searchArticles } from "./apis";
 import {
-  announcementTiles,
+  getArticleDetails,
+  getMostViewedArticles,
+  searchArticles,
+} from "./apis";
+import {
   renderAnnouncementTiles,
   renderNewsTiles,
   renderTopArticles,
@@ -11,7 +14,7 @@ import {
   SearchArticleDetailType,
   StateType,
 } from "./models";
-import "../styles.css";
+import "./styles/styles.css";
 
 const $ = (query: string) => {
   const elements = document.querySelectorAll(query);
@@ -48,8 +51,6 @@ const scrollButtons = $("#scroll-button") as NodeListOf<HTMLButtonElement>;
 const state: StateType = {
   topNews: [],
   allNews: [],
-  firstIndex: 0,
-  lastIndex: 7,
 };
 
 const setState = (callBack: () => void, renderFunction?: () => void) => {
@@ -72,11 +73,11 @@ const renderTopNewsArticles = async () => {
 };
 
 const getNews = async () => {
+  renderTopNewsArticles();
   renderSkeletonTiles(newsTilesContainer);
   renderAnnouncementTiles(announcementTilesContainer);
 
   const data2 = await searchArticles("");
-  renderTopNewsArticles();
 
   setState(
     () => (state.allNews = data2 ?? []),
@@ -215,3 +216,24 @@ scrollButtons.forEach((button) => {
     }
   });
 });
+
+//redirection
+const observer = new MutationObserver(function (mutationsList: any, _) {
+  for (const mutation of mutationsList) {
+    if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+      for (const addedNode of mutation.addedNodes) {
+        if (addedNode?.classList?.contains("news-tile")) {
+          const newsTiles = $(".news-tile") as NodeListOf<HTMLDivElement>;
+
+          newsTiles.forEach((tile) => {
+            tile.addEventListener("click", () => {
+              window.location.href = "detail.html?id=1";
+            });
+          });
+        }
+      }
+    }
+  }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
