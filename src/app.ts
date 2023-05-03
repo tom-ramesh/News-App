@@ -1,4 +1,8 @@
-import { getMostViewedArticles, searchArticles } from "./apis";
+import {
+  getArticleDetails,
+  getMostViewedArticles,
+  searchArticles,
+} from "./apis";
 import {
   renderAnnouncementTiles,
   renderNewsTiles,
@@ -212,3 +216,24 @@ scrollButtons.forEach((button) => {
     }
   });
 });
+
+//redirection
+const observer = new MutationObserver(function (mutationsList: any, _) {
+  for (const mutation of mutationsList) {
+    if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+      for (const addedNode of mutation.addedNodes) {
+        if (addedNode?.classList?.contains("news-tile")) {
+          const newsTiles = $(".news-tile") as NodeListOf<HTMLDivElement>;
+
+          newsTiles.forEach((tile) => {
+            tile.addEventListener("click", () => {
+              window.location.href = "detail.html";
+            });
+          });
+        }
+      }
+    }
+  }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });

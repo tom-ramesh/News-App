@@ -10694,5 +10694,12 @@
       "word_count": 1086,
       "uri": "nyt://article/0901667a-fbf0-5949-8246-9e0734dc24e2"
     }
+  ],
+  "details": [
+    {
+      "id": 1,
+      "abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut varius diam. Donec ac dui eu mauris volutpat rhoncus. Quisque.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget nunc at sem consectetur aliquet nec sed risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut quis odio a tellus sollicitudin luctus sed at felis. Fusce in venenatis nibh, vel vehicula nunc. Etiam ac turpis est. Quisque nec nisl purus. Maecenas varius commodo ultrices. Suspendisse sit amet varius quam. Vestibulum fringilla nisl ac ullamcorper consequat. Nullam accumsan ex finibus orci lacinia lacinia. Aenean quam diam, dignissim elementum justo sed, facilisis vulputate nisl. Integer semper ut arcu at molestie. Nunc pulvinar finibus ligula eu pharetra. Sed molestie, risus et fringilla aliquam, turpis dui elementum nibh, et ornare elit enim a justo. Morbi laoreet vulputate gravida. Aenean in sem nisl.Quisque vitae hendrerit erat, non faucibus arcu. Ut tempus vestibulum lorem, sed accumsan tellus sodales nec. In sit amet risus commodo felis rutrum tempus. Sed congue gravida risus a placerat. Aliquam pellentesque risus in libero sodales imperdiet. In eleifend eu justo a accumsan. Fusce eu augue blandit, malesuada odio vitae, tristique nisl. Maecenas a interdum leo. Suspendisse tincidunt nibh at justo feugiat, et iaculis justo molestie. Maecenas volutpat dui vitae arcu elementum, vitae dignissim lectus fringilla."
+    }
   ]
 }

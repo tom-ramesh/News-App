@@ -12,3 +12,11 @@ export const searchArticles = async (searchString: string) => {
 
   return data.json();
 };
+
+export const getArticleDetails = async (articleId: number) => {
+  const data = await fetch(
+    `${API_URL}/details?${getQueryString({ id: articleId })}`
+  );
+
+  return data.json();
+};
