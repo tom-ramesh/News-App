@@ -1,3 +1,6 @@
-import "../detail.css";
+import "./styles/detail.css";
 
-console.log("detail");
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
+
+console.log(id);

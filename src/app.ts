@@ -14,7 +14,7 @@ import {
   SearchArticleDetailType,
   StateType,
 } from "./models";
-import "../styles.css";
+import "./styles/styles.css";
 
 const $ = (query: string) => {
   const elements = document.querySelectorAll(query);
@@ -227,7 +227,7 @@ const observer = new MutationObserver(function (mutationsList: any, _) {
 
           newsTiles.forEach((tile) => {
             tile.addEventListener("click", () => {
-              window.location.href = "detail.html";
+              window.location.href = "detail.html?id=1";
             });
           });
         }
