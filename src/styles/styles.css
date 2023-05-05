@@ -62,8 +62,8 @@ body {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-areas: "sidebar newsbox morebox annoucementbox";
-  grid-template-columns: max-content max-content minmax(0, 1fr) max-content;
+  grid-template-areas: "sidebar newsbox morebox";
+  grid-template-columns: max-content max-content minmax(0, 1fr);
 }
 
 /* side-nav */
@@ -579,85 +579,6 @@ body {
 
 /* end of news-tile */
 
-/* announcements section */
-.announcements-container {
-  grid-area: annoucementbox;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-}
-
-.announcements-container .title {
-  margin-left: 3rem;
-}
-
-.carousel-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-}
-
-.carousel-box :is(.btn-left, .btn-right) {
-  cursor: pointer;
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 4rem;
-  width: 4rem;
-  text-align: center;
-  padding: 2rem;
-  font-size: 3.5rem;
-  border-radius: 50%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  transition-property: color, transform;
-  transition: 0.2s ease-in;
-}
-
-.carousel-box :is(.btn-left, .btn-right):hover {
-  transform: scale(1.1);
-  color: var(--main-color);
-}
-
-.carousel-box :is(.btn-left, .btn-right).dark-mode {
-  background: var(--grey-dark);
-  color: var(--main-white);
-}
-
-.announcements-table {
-  display: flex;
-  width: 95%;
-  gap: 1rem;
-  overflow-x: scroll;
-  padding: 1rem 1rem;
-  margin: 0 1rem;
-  scrollbar-width: none;
-}
-
-.announcements-table::-webkit-scrollbar {
-  display: none;
-}
-
-.announcements-container .announcement-tile {
-  max-width: 250px;
-  min-width: 150px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  border-radius: 1rem;
-}
-
-.announcements-container .announcement-tile.dark-mode {
-  background-color: var(--grey-dark);
-}
-.announcements-container .announcement-tile p {
-  display: none;
-}
-/* end of announcements section */
-
 /* toggle-switch */
 .toggle-switch {
   cursor: pointer;
@@ -696,7 +617,6 @@ body {
 /* end of toggle-switch */
 
 /* responsive layouts */
-
 @media (max-width: 1200px) {
   html {
     font-size: 60%;
@@ -869,7 +789,6 @@ body {
   .body-container {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "annoucementbox"
       "newsbox"
       "sidebar";
   }

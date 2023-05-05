@@ -26,6 +26,18 @@ body {
   margin: auto;
 }
 
+:root {
+  --main-color: #f27405;
+  --secondary-color: #f2913d;
+  --main-white: #fff;
+  --main-black: #000;
+  --background-color: #f2e7dc;
+  --grey-dark: #666;
+  --grey-light: #c7c7c7;
+  --skeleton-grey: #e9e9e9;
+  --skeleton-grey-light: #fafafa;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -39,12 +51,19 @@ body {
   background-color: var(--main-color);
 }
 
+/* main-container */
+.detail-container {
+  display: grid;
+  grid-template-areas: "sidenav contentbox";
+  grid-template-columns: max-content auto;
+}
+
 /* side-nav */
 .side-nav {
   height: 100%;
   border-right: 1px solid #c7c7c7;
   width: max-content;
-  grid-area: sidebar;
+  grid-area: sidenav;
 }
 
 .side-nav .page-icons {
@@ -96,6 +115,48 @@ body {
   100% {
     transform: rotateZ(-15deg);
   }
+}
+
+/* content body */
+.content-body {
+  position: relative;
+  height: 100vh;
+  grid-area: contentbox;
+  padding: 2rem;
+}
+
+.detail-container .article-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-container .article-content img {
+  width: 90%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.detail-container .article-content .content-box {
+  position: absolute;
+  top: 300px;
+  width: 70%;
+  max-height: 500px;
+  overflow: hidden;
+  padding: 5rem 12rem;
+  text-align: justify;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #ffffff;
+  overflow: auto;
+}
+
+.detail-container .article-content .content-box h4 {
+  font-size: 1.8rem;
+}
+
+.detail-container .article-content .content-box p {
+  margin-top: 2rem;
+  font-size: 1.5rem;
 }
 
 /* mobile-screens */
@@ -179,5 +240,36 @@ body {
 
   #announcements-icon {
     display: block;
+  }
+
+  .content-body {
+    padding: 1rem;
+    position: unset;
+  }
+
+  .detail-container .article-content {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .detail-container .article-content img {
+    width: 95%;
+  }
+
+  .detail-container .article-content .content-box {
+    position: unset;
+    padding: 2rem;
+    transform: unset;
+    width: 95%;
+    max-height: 500px;
+  }
+
+  .detail-container .article-content .content-box h4 {
+    font-size: 1.6rem;
+  }
+
+  .detail-container .article-content .content-box p {
+    margin-top: 1rem;
+    font-size: 1.4rem;
   }
 }
