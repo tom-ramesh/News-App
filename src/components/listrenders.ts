@@ -1,11 +1,10 @@
 import {
   MostPopularArticleDetailsType,
-  MultimediaType,
   SearchArticleDetailType,
   StateType,
-} from "../models";
-import { makeImageUrl } from "../requests";
+} from "../models/models";
 import noDataImage from "../../public/images/no_data.png";
+import { generateRandomColor } from "../utils/utils";
 
 const nodataImage = `<img src=${noDataImage} alt="" class="no-data-image">`;
 
@@ -79,24 +78,6 @@ export const renderTopArticles = <
   }
 };
 
-const getNewsTileImage = (multimediaArray: MultimediaType) => {
-  const imageType = [
-    "thumbnail",
-    "thumbLarge",
-    "square320",
-    "square640",
-    "blog480",
-    "blog533",
-    "blog427",
-  ];
-
-  const selectedImage = multimediaArray.find((imageData) =>
-    imageType.includes(imageData?.subType || imageData?.subtype)
-  );
-  // return makeImageUrl(selectedImage ? selectedImage.url : "");
-  return makeImageUrl(multimediaArray[0].url || "");
-};
-
 export const renderNewsTiles = (state: StateType, container: HTMLElement) => {
   const tileCards = [
     ...state.allNews,
@@ -128,16 +109,6 @@ export const renderNewsTiles = (state: StateType, container: HTMLElement) => {
     container.innerHTML = nodataImage;
   }
 };
-
-function generateRandomColor() {
-  let r = Math.floor(Math.random() * 106) + 125;
-  let g = Math.floor(Math.random() * 106) + 125;
-  let b = Math.floor(Math.random() * 106) + 125;
-
-  let hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-
-  return hex;
-}
 
 export const announcementTiles = [...Array(15)].map((_, i: number) => {
   const randomColor = generateRandomColor();

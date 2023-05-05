@@ -6,14 +6,14 @@ dotenv.config();
 
 module.exports = {
   mode: "development",
-  entry: { bundle: "./src/app.ts", detail: "./src/detail.ts" },
+  entry: { bundle: "./src/pages/app.ts", detail: "./src/pages/detail.ts" },
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "/dist/",
   },
   devServer: {
-    static: [{ directory: path.join(__dirname) }],
+    static: [{ directory: path.join(__dirname, "./src/views") }],
     compress: true,
     port: 3000,
   },

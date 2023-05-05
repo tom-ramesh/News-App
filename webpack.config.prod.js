@@ -3,17 +3,26 @@ const CleanPlugin = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const dotenv = require("dotenv");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 dotenv.config();
 
 const pages = [
-  { filename: "index.html", template: "index.html", chunks: ["bundle"] },
-  { filename: "detail.html", template: "detail.html", chunks: ["detail"] },
+  {
+    filename: "index.html",
+    template: "./src/views/index.html",
+    chunks: ["bundle"],
+  },
+  {
+    filename: "detail.html",
+    template: "./src/views/detail.html",
+    chunks: ["detail"],
+  },
 ];
 
 module.exports = {
   mode: "production",
-  entry: { bundle: "./src/app.ts", detail: "./src/detail.ts" },
+  entry: { bundle: "./src/pages/app.ts", detail: "./src/pages/detail.ts" },
   output: { filename: "[name].js", path: path.resolve(__dirname, "dist") },
   module: {
     rules: [
@@ -27,7 +36,7 @@ module.exports = {
         },
         exclude: /node_modules/,
       },
-      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"] },
     ],
   },
   resolve: {
@@ -37,5 +46,6 @@ module.exports = {
     new CleanPlugin.CleanWebpackPlugin(),
     ...pages.map((page) => new HTMLWebpackPlugin(page)),
     new webpack.DefinePlugin({ API_URL: JSON.stringify(process.env.API_URL) }),
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
   ],
 };
