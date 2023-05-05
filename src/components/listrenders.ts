@@ -85,7 +85,7 @@ export const renderNewsTiles = (state: StateType, container: HTMLElement) => {
     ...state.allNews,
     ...state.allNews,
   ].map((news) => {
-    return `<div class="news-tile" data-id=${1}>
+    return `<div class="news-tile" data-id=${news.id}>
       <img
         src=${news.image_url ?? ""}
         alt=""

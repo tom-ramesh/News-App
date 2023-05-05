@@ -16,6 +16,7 @@ module.exports = {
     static: [{ directory: path.join(__dirname, "./src/views") }],
     compress: true,
     port: 3000,
+    hot: true,
   },
   devtool: "inline-source-map",
   module: {

@@ -1,3 +1,4 @@
+//generic function for elemet selection
 export const selectElement = (query: string) => {
   const elements = document.querySelectorAll(query);
 
@@ -9,12 +10,14 @@ export const selectElement = (query: string) => {
   return null;
 };
 
+//to toggle between dark-mode class of nodelist of elements
 export const toggleDarkModeClass = (elementsList: NodeListOf<HTMLElement>) => {
   elementsList?.forEach((element) => {
     element.classList.toggle("dark-mode");
   });
 };
 
+//to set the state object and to render elements using the updated state
 export const setState = (callBack: () => void, renderFunction?: () => void) => {
   callBack();
   renderFunction && renderFunction();
