@@ -30,6 +30,7 @@ export type SearchArticleDetailType = {
   pub_date: string;
   section_name: string;
   type: string;
+  id: number;
   image_url: string;
 };
 
@@ -38,4 +39,11 @@ export type StateType = {
     | Array<MostPopularArticleDetailsType>
     | Array<SearchArticleDetailType>;
   allNews: Array<SearchArticleDetailType>;
+};
+
+export type ArticleDetails = {
+  id: number;
+  image_url: string;
+  main: string;
+  description: string;
 };

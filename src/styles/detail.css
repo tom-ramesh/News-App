@@ -159,6 +159,24 @@ body {
   font-size: 1.5rem;
 }
 
+.detail-container .content-body .back-btn {
+  cursor: pointer;
+  background: none;
+  padding: 2rem;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.detail-container .content-body .back-btn i {
+  margin-right: 1rem;
+  transition: transform 0.3s ease-in;
+}
+
+.detail-container .content-body .back-btn:hover i {
+  transform: scale(1.01) translateX(-10px);
+}
+
 /* mobile-screens */
 @media (max-width: 768px) {
   html {
